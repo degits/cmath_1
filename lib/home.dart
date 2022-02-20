@@ -10,7 +10,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
 
     List<Widget> body = [];
-    List<List<Map>> bodyAsType = [];
+    List<List<Map>> bodyForEncode = [];
 
     int startIndex = 0;
     int endIndex = 0;
@@ -40,9 +40,9 @@ class HomePage extends StatelessWidget {
 
     for (int i = 0; i < linesList.length; i++) {
       body.add(Line.toLineWidget(linesList[i])['widget']);
-      bodyAsType.add(Line.toLineWidget(linesList[i])['list']);
+      bodyForEncode.add(Line.toLineWidget(linesList[i])['list']);
     }
-    print(bodyAsType);
+    print(bodyForEncode);
     return Scaffold(
       backgroundColor: Colors.grey[100],
       //appBar: AppBar(),
