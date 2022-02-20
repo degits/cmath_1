@@ -8,7 +8,10 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     List<Widget> body = [];
+    List<List<Map>> bodyAsType = [];
+
     int startIndex = 0;
     int endIndex = 0;
     List<String> linesList = [];
@@ -16,7 +19,7 @@ class HomePage extends StatelessWidget {
     String completeQuestion = fu();
 
     while (true) {
-      print(completeQuestion.indexOf("\n", startIndex));
+      //print(completeQuestion.indexOf("\n", startIndex));
       endIndex = completeQuestion.indexOf("\n", startIndex);
       if (endIndex != -1) {
         String line = completeQuestion.substring(startIndex, endIndex);
@@ -32,20 +35,22 @@ class HomePage extends StatelessWidget {
         break;
       }
     }
-    print("=================================");
-    print(linesList);
+    //print("=================================");
+    //print(linesList);
 
     for (int i = 0; i < linesList.length; i++) {
-      body.add(Line.toLineWidget(linesList[i]));
+      body.add(Line.toLineWidget(linesList[i])['widget']);
+      bodyAsType.add(Line.toLineWidget(linesList[i])['list']);
     }
+    print(bodyAsType);
     return Scaffold(
       backgroundColor: Colors.grey[100],
-      appBar: AppBar(),
+      //appBar: AppBar(),
       body: ListView(
         children: body,
       ),
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
         onPressed: () {},
       ),
     );

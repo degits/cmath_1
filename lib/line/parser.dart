@@ -29,7 +29,7 @@ class Parser {
       if (lineParts.length == 0) {
         subString =
             wordOnlyLine.substring(subStringStartIndex, subStringEndIndex + 1);
-        print(subString);
+        //print(subString);
 
         if (subString.startsWith("|")) {
           lineParts.add(contentList[index]);

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'parser.dart';
 
 class Line {
-  static Widget toLineWidget(String line) {
+  static Map toLineWidget(String line) {
     //line =
     //   "Hi <m>math1</m> word1 <m>second one is this</m> <c>code_1</c> word <b>bold</b> last.";
     List<Map> lineParts = Parser.run(line);
@@ -71,10 +71,13 @@ class Line {
       }
     }
 
-    return Text.rich(
+    return {
+    'widget': Text.rich(
       TextSpan(
         children: singleLineWidgetList,
       ),
-    );
+    ),
+    'list' : lineParts,
+    };
   }
 }
