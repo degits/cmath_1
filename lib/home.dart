@@ -13,7 +13,7 @@ class HomePage extends StatelessWidget {
     int endIndex = 0;
     List<String> linesList = [];
     //!must be a callback
-    String completeQuestion = fu(); 
+    String completeQuestion = fu();
 
     while (true) {
       print(completeQuestion.indexOf("\n", startIndex));
@@ -23,26 +23,30 @@ class HomePage extends StatelessWidget {
         //!This must needed for empty line
         if (line == "") {
           linesList.add(" ");
-        }else {
+        } else {
           linesList.add(line);
         }
-        
+
         startIndex = endIndex + 1;
-      }else {
+      } else {
         break;
       }
     }
     print("=================================");
     print(linesList);
 
-
     for (int i = 0; i < linesList.length; i++) {
       body.add(Line.toLineWidget(linesList[i]));
     }
     return Scaffold(
+      backgroundColor: Colors.grey[100],
       appBar: AppBar(),
       body: ListView(
-        children: body
+        children: body,
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add),
+        onPressed: () {},
       ),
     );
   }
