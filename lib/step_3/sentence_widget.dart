@@ -1,35 +1,30 @@
-import 'package:flutter_math_fork/flutter_math.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_math_fork/flutter_math.dart';
 
-import 'parser.dart';
-
-class Line {
-  static Map toLineWidget(String line) {
-    //line =
-    //   "Hi <m>math1</m> word1 <m>second one is this</m> <c>code_1</c> word <b>bold</b> last.";
-    List<Map> lineParts = Parser.run(line);
+class Sentence {
+  static Widget getWidget(List<Map> linePartsList) {
 
     List<WidgetSpan> singleLineWidgetList = [];
-    for (int i = 0; i < lineParts.length; i++) {
-      if (lineParts[i]["tag-type"] == "code") {
+    for (int i = 0; i < linePartsList.length; i++) {
+      if (linePartsList[i]["tag-type"] == "code") {
         singleLineWidgetList.add(
           WidgetSpan(
               alignment: PlaceholderAlignment.baseline,
               baseline: TextBaseline.alphabetic,
               child: Text(
-                lineParts[i]["content"],
+                linePartsList[i]["content"],
                 style: const TextStyle(
                   fontStyle: FontStyle.italic,
                   fontSize: 18.0
                 ),
               )),
         );
-      } else if (lineParts[i]["tag-type"] == "math") {
+      } else if (linePartsList[i]["tag-type"] == "math") {
         singleLineWidgetList.add(WidgetSpan(
             alignment: PlaceholderAlignment.baseline,
             baseline: TextBaseline.alphabetic,
             child: Math.tex(
-              lineParts[i]["content"],
+              linePartsList[i]["content"],
               textStyle: const TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.w600
@@ -45,12 +40,12 @@ class Line {
               // logicalPpi: MathOptions.defaultLogicalPpiFor(42),
             )
         );
-      }else if (lineParts[i]["tag-type"] == "bold") {
+      }else if (linePartsList[i]["tag-type"] == "bold") {
         singleLineWidgetList.add(WidgetSpan(
             alignment: PlaceholderAlignment.baseline,
             baseline: TextBaseline.alphabetic,
             child: Text(
-                lineParts[i]["content"],
+                linePartsList[i]["content"],
                 style: const TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 18.0
@@ -62,7 +57,7 @@ class Line {
               alignment: PlaceholderAlignment.baseline,
               baseline: TextBaseline.alphabetic,
               child: Text(
-                lineParts[i]["content"],
+                linePartsList[i]["content"],
                 style: const TextStyle(
                   fontSize: 18.0
                 ),
@@ -71,13 +66,11 @@ class Line {
       }
     }
 
-    return {
-    'widget': Text.rich(
+    return 
+    Text.rich(
       TextSpan(
         children: singleLineWidgetList,
       ),
-    ),
-    'list' : lineParts,
-    };
+    );
   }
 }

@@ -1,7 +1,31 @@
 //1.split by " "(spaces)    !?split cannot be used
 //if split used, end index cannot be get
 
-class Parser {
+class SingleSentenceParser {
+
+
+  /*
+  return of run() :-
+
+  [
+    {
+      "tag-type": "word",
+      "content": myWord,
+    },
+    {
+      "tag-type": "math",
+      "content": myEqu,
+    },
+    {
+      "tag-type": "bold",
+      "content": myBoldTextPart,
+    },
+    {
+      "tag-type": "code",
+      "content": myCode,
+    }
+  ]
+   */
   static List<Map> run(String line) {
     //String myLine =
     //   " Hi <m>math1</m> word1 <m>second one is this</m> <c>code_1</c> word <b>bold</b> last. ";
@@ -111,7 +135,10 @@ class Parser {
         "startTag": "<c>",
         "endTag": "</c>",
       },
-      {"startTag": "<b>", "endTag": "</b>"}
+      {
+        "startTag": "<b>", 
+        "endTag": "</b>"
+      }
     ];
 
     //-output-
