@@ -1,9 +1,8 @@
-import 'package:cmath_1/step_0/_question.dart';
-import 'package:cmath_1/step_2/img_parser.dart';
-import 'package:cmath_1/step_2/multi_que.dart';
-import 'package:cmath_1/step_2/subparts.dart';
-
-import '../step_2/sentence_parser.dart';
+import 'package:cmath_1/parser/parser_collection/img_parser.dart';
+import 'package:cmath_1/parser/parser_collection/multi_que.dart';
+import 'package:cmath_1/parser/parser_collection/sentence_parser.dart';
+import 'package:cmath_1/parser/parser_collection/subparts.dart';
+import 'package:cmath_1/parser/question.dart';
 
 class Parser {
   static List<Map> getQuestionAsDataStructure() {

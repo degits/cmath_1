@@ -1,12 +1,12 @@
-import 'package:cmath_1/step_1/_parser.dart';
-import 'package:cmath_1/step_3/img_widgets.dart';
-import 'package:cmath_1/step_3/multi_que_widget.dart';
-import 'package:cmath_1/step_3/sentence_widget.dart';
-import 'package:cmath_1/step_3/sub_part_widget.dart';
+import 'package:cmath_1/parser/parser.dart';
+import 'package:cmath_1/question/step_3/img_widgets.dart';
+import 'package:cmath_1/question/step_3/multi_que_widget.dart';
+import 'package:cmath_1/question/step_3/sentence_widget.dart';
+import 'package:cmath_1/question/step_3/sub_part_widget.dart';
 import 'package:flutter/material.dart';
 
 class Question {
-  static List<Widget> getWidget() {
+  static List<Widget> getWidget(List questionLineList) {
     /*
     [
       {
@@ -15,7 +15,7 @@ class Question {
       },
     ]
     */
-    List questionLineList = Parser.getQuestionAsDataStructure();
+    
     List<Widget> questionBody = [];
 
     for (int i = 0; i < questionLineList.length; i++) {
