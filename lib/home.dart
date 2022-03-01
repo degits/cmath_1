@@ -65,7 +65,9 @@ class HomePage extends StatelessWidget {
   }
 
   void _onNavTapped(BuildContext context, int item) {
-    context.read<Paper>().export();
+    if (item == 0) {
+      context.read<Paper>().export();
+    }
   }
   void _onItemTapped(BuildContext context, List questionList) {
     context.read<Paper>().add(questionList);
